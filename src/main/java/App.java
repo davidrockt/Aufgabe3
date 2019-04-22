@@ -5,25 +5,30 @@ import java.util.Map;
 
 public class App {
 
-    private static Map<String, String> reservations = new HashMap<String, String>() {{
-        put("saturday", "No reservation");
-        put("sunday", "No reservation");
-    }};
-
+    private static int count = 0;
     public static void main(String[] args) {
+        T3 game = new T3(); // must be effectively final
         Javalin app = Javalin.create()
-            .enableStaticFiles("/public")
-            .start(7070);
-
-        app.post("/make-reservation", ctx -> {
-            reservations.put(ctx.formParam("day"), ctx.formParam("time"));
-            ctx.html("Your reservation has been saved");
+                .enableStaticFiles("/public")
+                .start(7000);
+        app.get("/move", ctx -> {
+            int input = Integer.parseInt(ctx.queryParam("pos"));
+            if (game.isValidMove(input)) game.move(input);
+            ctx.result(game.toString());
         });
-
-        /* Die für einen Tag hinterlegte Uhrzeit wird abgefragt.
-         */
-        app.get("/check-reservation", ctx -> {
-            ctx.html("hello people");
+        app.get("/submit", ctx -> {
+            int input = Integer.parseInt(ctx.queryParam("val"));
+            System.out.println("input = " + input);
+            ctx.html(" " + input);
         });
+        app.get("/newgame", ctx -> {
+            game.undoAll();
+            ctx.result(game.toString());
+        });
+        app.get("/undo", ctx -> {
+            game.undo();
+            ctx.result(game.toString());
+        });
+        app.get("/rows", ctx -> ctx.result(game.toString()));
     }
 }

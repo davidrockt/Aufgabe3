@@ -1,28 +1,130 @@
 <html>
 
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
 </head>
 
+<body onload="otherCurr(1)">
 <h1>Einfacher Währungsrechner</h1>
 
-    <input name="inputValue">
+    <input type="text" id="inputValue">
     EUR entsprechen
-    <p id="otherCurrency"> 1 </p>
+    <span id="otherCurrency"> 1 </span>
     <select name="currency">
         <option value="euro">EUR</option>
         <option value="dollar">DOLL</option>
     </select>
     <br>
-    <button onclick="bla('input')">Submit</button>
+    <button onclick="otherCurr()"
+            type="button">Submit</button>
+<center>
+    <button class="button" onclick="sendRequestGET('newgame')"
+            type="button">New Game!</button>
+</center>
+<table id='board'>
+    <!--
+      <tr>
+        <td onclick="sendMove(0)"></td>
+        <td onclick="sendMove(1)"></td>
+        <td onclick="sendMove(2)"></td>
+      </tr>
+      <tr>
+        <td onclick="sendMove(3)"></td>
+        <td onclick="sendMove(4)"></td>
+        <td onclick="sendMove(5)"></td>
+      </tr>
+      <tr>
+        <td onclick="sendMove(6)"></td>
+        <td onclick="sendMove(7)"></td>
+        <td onclick="sendMove(8)"></td>
+      </tr>
+    -->
+</table>
+<center>
+    <button class="button" onclick="sendRequestGET('undo')"
+            type="button">Undo move</button>
+</center>
+</body>
 </html>
 
+<style>
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  #board {
+    padding: 0px;
+    margin: 0 auto;
+  }
+
+  #board tr td {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #1c1c1c;
+    font-family: Helvetica;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  #board tr td:hover {
+    background: #e4e4e4;
+    cursor: pointer;
+  }
+
+  .button {
+  background-color: #80ba24 ;
+  border-radius: 8px;
+  border: none;
+  color: #4a5c66;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 8px 4px;
+}
+</style>
+
 <script type="text/javascript">
+  /* Hier werden HTTP-Request (GET-Methode) versendet
+     und als Antwort stets der innere Teil der
+     Tabelle mit dem TicTacToe-Spielbrett erwartet
+  */
   var http = new XMLHttpRequest();
 
-  function bla(field) {
-      http.open('GET', field);
-      http.send();
+  function sendRequestGET(path = '', query = '') {
+    http.open('GET', path + '?' + query);
+    http.send();
+  }
+
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('otherCurrency').innerHTML = this.responseText;
+    }
+  }
+
+  /* Diese Funktionen sind Beispiele, wie der
+     Aufruf an `sendRequestGET` delegiert wird.
+  */
+  function sendMove(field) {
+      sendRequestGET('move', 'pos=' + field);
+  }
+
+  function loadInnerTable() {
+      sendRequestGET('rows');
+  }
+
+  function otherCurr(value) {
+      console.log('value = ' + value);
+      if(value === undefined)
+        value = document.getElementById('inputValue').value;
+      console.log('now value = ' + value);
+      sendRequestGET('input', 'val=' + value);
   }
 </script>
-
