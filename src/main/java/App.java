@@ -5,8 +5,13 @@ import java.util.Map;
 
 public class App {
 
-    private static int count = 0;
     public static void main(String[] args) {
+        Map<String, Float> exchange = new HashMap<String, Float>(){{
+            put("euro", 1f);
+            put("dollar", 1.12f);
+            put("yuan", 7.54f);
+            put("bitcoin", 0.0002f);
+        }};
         T3 game = new T3(); // must be effectively final
         Javalin app = Javalin.create()
                 .enableStaticFiles("/public")
@@ -17,11 +22,15 @@ public class App {
             ctx.result(game.toString());
         });
         app.get("/submit", ctx -> {
+            // if(ctx.queryParam("val")) return;
             int input = Integer.parseInt(ctx.queryParam("val"));
+            float change = exchange.get(ctx.queryParam("curr"));
             System.out.println("input = " + input);
-            ctx.html(" " + input);
+            System.out.println("currency = " + change);
+            ctx.result(Float.toString(Math.round(100.0f * input * change) / 100.0f));
         });
         app.get("/newgame", ctx -> {
+            System.out.println("newgame !");
             game.undoAll();
             ctx.result(game.toString());
         });

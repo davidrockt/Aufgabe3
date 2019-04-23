@@ -7,22 +7,21 @@
 <body onload="otherCurr(1)">
 <h1>Einfacher Währungsrechner</h1>
 
-    <input type="text" id="inputValue">
+    <input type="text" id="inputValue" onkeyup="otherCurr()">
     EUR entsprechen
     <span id="otherCurrency"> 1 </span>
-    <select name="currency">
+    <select id="currency" name="currency" onchange="otherCurr()">
         <option value="euro">EUR</option>
         <option value="dollar">DOLL</option>
+        <option value="yuan">YUAN</option>
+        <option value="bitcoin">BITC</option>
     </select>
-    <br>
-    <button onclick="otherCurr()"
-            type="button">Submit</button>
+<!--
 <center>
     <button class="button" onclick="sendRequestGET('newgame')"
             type="button">New Game!</button>
 </center>
 <table id='board'>
-    <!--
       <tr>
         <td onclick="sendMove(0)"></td>
         <td onclick="sendMove(1)"></td>
@@ -38,12 +37,13 @@
         <td onclick="sendMove(7)"></td>
         <td onclick="sendMove(8)"></td>
       </tr>
-    -->
 </table>
 <center>
     <button class="button" onclick="sendRequestGET('undo')"
             type="button">Undo move</button>
 </center>
+-->
+
 </body>
 </html>
 
@@ -99,6 +99,7 @@
   var http = new XMLHttpRequest();
 
   function sendRequestGET(path = '', query = '') {
+    console.log('path and query: ' + path + query);
     http.open('GET', path + '?' + query);
     http.send();
   }
@@ -120,11 +121,9 @@
       sendRequestGET('rows');
   }
 
-  function otherCurr(value) {
-      console.log('value = ' + value);
-      if(value === undefined)
-        value = document.getElementById('inputValue').value;
-      console.log('now value = ' + value);
-      sendRequestGET('input', 'val=' + value);
+  function otherCurr() {
+      let value = document.getElementById('inputValue').value;
+      let currency = document.getElementById('currency').value;
+      sendRequestGET('submit', 'val=' + value + '&curr=' + currency);
   }
 </script>
