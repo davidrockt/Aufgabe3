@@ -22,7 +22,7 @@ public class App {
             ctx.result(game.toString());
         });
         app.get("/submit", ctx -> {
-            // if(ctx.queryParam("val")) return;
+            if(ctx.queryParam("val").length() == 0) return;
             int input = Integer.parseInt(ctx.queryParam("val"));
             float change = exchange.get(ctx.queryParam("curr"));
             System.out.println("input = " + input);
