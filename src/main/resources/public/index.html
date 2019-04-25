@@ -2,28 +2,42 @@
 
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 </head>
 
 <body onload="otherCurr(1)">
-<h1>Einfacher Währungsrechner</h1>
-
-    <input type="text" id="inputValue" onkeyup="otherCurr()">
+<h2>Einfacher Währungsrechner</h2>
+<form>
+    <div class="form-row">
+<!--        <div class="col">-->
+    <input class="" type="text" id="inputValue" onkeyup="otherCurr()">
+<!--        </div>-->
+<!--        <div class="col">-->
     EUR entsprechen
     <span id="otherCurrency"> 1 </span>
-    <select id="currency" name="currency" onchange="otherCurr()">
+<!--        </div>-->
+<!--        <div class="col">-->
+    <select class="" id="currency" name="currency" onchange="otherCurr()">
         <option value="euro">EUR</option>
         <option value="dollar">DOLL</option>
         <option value="yuan">YUAN</option>
         <option value="bitcoin">BITC</option>
     </select>
+<!--        </div>-->
+    </div>
+</form>
 
 </body>
 </html>
 
 <style>
-* {
 
-  }
+h2 {
+    font-family: verdana;
+}
 </style>
 
 <script type="text/javascript">
