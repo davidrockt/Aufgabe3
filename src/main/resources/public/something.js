@@ -8,12 +8,11 @@ var http = new XMLHttpRequest();
 
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById('otherCurrency').innerHTML = this.responseText;
+      document.getElementById('display').value = this.responseText;
     }
   }
 
-  function otherCurr() {
-      let value = document.getElementById('inputValue').value;
-      let currency = document.getElementById('currency').value;
-      sendRequestGET('submit', 'val=' + value + '&curr=' + currency);
+  function sendNumber(value = '') {
+      // let currency = document.getElementById('currency').value;
+      sendRequestGET('number', 'val=' + value);
   }

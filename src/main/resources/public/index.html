@@ -2,46 +2,45 @@
 
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
-
-    <!-- Bootstrap CSS -->
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="styling.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 </head>
-<body onload="otherCurr(1)" id="body">
-<h2>Einfacher Währungsrechner</h2>
-<form>
-    <div class="form-row">
-<!--        <div class="col">-->
-    <input class="" type="text" id="inputValue" onkeyup="otherCurr()">
-<!--        </div>-->
-<!--        <div class="col">-->
-    EUR entsprechen
-    <span id="otherCurrency"> 1 </span>
-<!--        </div>-->
-<!--        <div class="col">-->
-    <select class="" id="currency" name="currency" onchange="otherCurr()">
-        <option value="euro">EUR</option>
-        <option value="dollar">DOLL</option>
-        <option value="yuan">YUAN</option>
-        <option value="bitcoin">BITC</option>
-    </select>
-<!--        </div>-->
-    </div>
-</form>
+<body id="body">
+
+<table class="calculator">
+    <tr>
+        <td colspan="5"><input id="display" name="display" value="0" size="28" maxlength="25"></td>
+    </tr>
+    <tr>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(7)" value="7"></td>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(8)" value="8"></td>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(9)" value="9"></td>
+        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="/"></td>
+    <tr>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(4)" value="4"></td>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(5)" value="5"></td>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(6)" value="6"></td>
+        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="*"></td>
+    </tr>
+    <tr>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(1)" value="1"></td>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(2)" value="2"></td>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(3)" value="3"></td>
+        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="-"></td>
+    </tr>
+    <tr>
+        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="+/-"></td>
+        <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(0)" value="0"></td>
+        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="="></td>
+        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="+"></td>
+    </tr>
+</table>
 
 </body>
 </html>
 
 <style>
-body {
-    margin: 20px;
-}
 
-h2 {
-    font-family: verdana;
-}
 </style>
 
-<script type="text/javascript" src="something.js">
-
-</script>
+<script type="text/javascript" src="something.js"></script>
