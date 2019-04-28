@@ -1,15 +1,12 @@
-/*
-/o FloatInput.java
-        /o FloatNumber.java
 
-        System.out.println("Running tests ...");
+System.out.println("Running tests ...");
 
         try {
         assert false;
         System.out.println("ERROR: You forgot to enable asserts! Type: jshell -R-ea");
         System.exit(1);
-        } catch (AssertionError e) { */
-/* everything is fine if error is thrown *//*
+        } catch (AssertionError e) {
+/* everything is fine if error is thrown */
  }
 
 // Numeral aus max. 4 Zeichen (inkl. '.')
@@ -53,4 +50,4 @@
         assert n.put('1');
         assert n.getFloat() == 71.0f && n.toString().equals("71") : "Test 14";
 
-*/
+
