@@ -1,3 +1,4 @@
+/*
 
 System.out.println("Running tests ...");
 
@@ -6,7 +7,9 @@ System.out.println("Running tests ...");
         System.out.println("ERROR: You forgot to enable asserts! Type: jshell -R-ea");
         System.exit(1);
         } catch (AssertionError e) {
-/* everything is fine if error is thrown */
+*/
+/* everything is fine if error is thrown *//*
+
  }
 
 // Numeral aus max. 4 Zeichen (inkl. '.')
@@ -51,3 +54,4 @@ System.out.println("Running tests ...");
         assert n.getFloat() == 71.0f && n.toString().equals("71") : "Test 14";
 
 
+*/
