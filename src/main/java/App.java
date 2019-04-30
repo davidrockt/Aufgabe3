@@ -18,5 +18,10 @@ public class App {
             System.out.println("number = " + number);
             ctx.result(number.toString());
         });
+
+        app.get("/undo", ctx -> {
+            number.undo();
+            ctx.result(number.toString());
+        });
     }
 }

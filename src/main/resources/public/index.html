@@ -15,7 +15,7 @@
         <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(7)" value="7"></td>
         <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(8)" value="8"></td>
         <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(9)" value="9"></td>
-        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="/"></td>
+        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" onclick="sendRequestGET('undo')" value="C"></td>
     <tr>
         <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(4)" value="4"></td>
         <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(5)" value="5"></td>
@@ -31,8 +31,8 @@
     <tr>
         <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="+/-"></td>
         <td><input type="button" class="btn btn-default" name="btnNum" onclick="sendNumber(0)" value="0"></td>
-        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="="></td>
-        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" value="+"></td>
+        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" onclick="sendNumber('.')" value="."></td>
+        <td><input type="button" class="btn btn-default btn-primary" name="btnMath" onclick="sendNumber('=')" value="="></td>
     </tr>
 </table>
 

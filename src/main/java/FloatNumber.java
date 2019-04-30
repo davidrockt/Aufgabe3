@@ -33,8 +33,11 @@ public class FloatNumber implements FloatInput {
 
     @Override
     public void undo() {
-        if(number.equals("0")) return;
-        number = number.substring(0, toString().length() - 1);
+        // // "0" kann nicht gelöscht werden
+        // if(number.equals("0")) return;
+
+        // Wenn number nur noch 1-stellig ist, mit "0" ersetzen
+        number = number.length() == 1 ? "0": number.substring(0, toString().length() - 1);
     }
 
     @Override
