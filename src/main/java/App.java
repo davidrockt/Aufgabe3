@@ -4,7 +4,7 @@ import io.javalin.Javalin;
 public class App {
 
     public static void main(String[] args) {
-        FloatNumber number = new FloatNumber(4);
+        FloatNumber number = new FloatNumber(16);
 
 
         Javalin app = Javalin.create()
@@ -21,6 +21,12 @@ public class App {
 
         app.get("/undo", ctx -> {
             number.undo();
+            ctx.result(number.toString());
+        });
+
+        app.get("/clear", ctx -> {
+            while (!number.toString().equals("0"))
+                number.undo();
             ctx.result(number.toString());
         });
     }
